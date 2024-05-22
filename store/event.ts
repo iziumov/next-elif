@@ -1,35 +1,35 @@
 import { create } from 'zustand';
 
-export type Participant = {
+export type ParticipantProps = {
   fullName: string;
   email: string;
   wheredidyourhear: string;
   dateofbirth: string;
 };
 
-export type Event = {
+export type EventProps = {
   id: string;
   title: string;
   description: string;
   date: string;
   organizer: string;
-  participants: Participant[];
+  participants: ParticipantProps[];
   createdAt: string;
 };
 
 interface EventStoreProps {
-  event: Event | null;
+  event: EventProps | null;
   search: string;
-  setEvent: (event: Event) => void;
-  addParticipant: (participant: Participant) => void;
+  setEvent: (event: EventProps) => void;
+  addParticipant: (participant: ParticipantProps) => void;
   setSearch: (search: string) => void;
 }
 
 const useEventStore = create<EventStoreProps>((set, get) => ({
   event: null,
   search: '',
-  setEvent: (event: Event) => set({ event }),
-  addParticipant: (participant: Participant) =>
+  setEvent: (event: EventProps) => set({ event }),
+  addParticipant: (participant: ParticipantProps) =>
     set((state) => {
       if (state.event) {
         return {

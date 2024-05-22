@@ -1,19 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Back } from '@/components';
+import { Back, Spinner } from '@/components';
 import useEvent from '@/hooks/useEvent';
-import useEventStore, { Participant, Event } from '@/store/event';
+import useEventStore, { ParticipantProps, EventProps } from '@/store/event';
 
 const Page = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const { data, isLoading, error } = useEvent(id);
   const { search, event, setEvent, setSearch } = useEventStore();
-  const [filteredParticipants, setFilteredParticipants] = useState<Participant[]>([]);
+  const [filteredParticipants, setFilteredParticipants] = useState<ParticipantProps[]>([]);
 
   useEffect(() => {
     if (data) {
-      setEvent(data as Event);
+      setEvent(data as EventProps);
     }
   }, [data, setEvent]);
 
@@ -28,7 +28,7 @@ const Page = ({ params }: { params: { id: string } }) => {
     }
   }, [search, event]);
 
-  if (isLoading) return <div>Spinner</div>;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className="flex-1 flex flex-col gap-2">

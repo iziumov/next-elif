@@ -1,16 +1,17 @@
 'use client';
 
-import { Event, Sort } from '@/components';
+import { Event, Sort, Spinner } from '@/components';
 import useEvents from '@/hooks/useEvents';
+import { EventProps } from '@/store/event';
 import useSortStore, { ESort } from '@/store/sort';
 
 const Home = () => {
   const { data, isLoading, error } = useEvents();
   const { sort } = useSortStore();
 
-  if (isLoading) return <div>Spinner</div>;
+  if (isLoading) return <Spinner />;
 
-  const sortedData = [...data].sort((a, b) => {
+  const sortedData = [...(data as EventProps[])].sort((a, b) => {
     switch (sort) {
       case ESort.title:
         return a.title.localeCompare(b.title);
