@@ -28,7 +28,7 @@ const RegisterModal = () => {
     setClose();
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const minDate = new Date('1945-02-10');
     const maxDate = new Date('2024-05-21');
