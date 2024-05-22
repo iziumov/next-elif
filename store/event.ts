@@ -1,17 +1,20 @@
 import { create } from 'zustand';
 
-type Participant = {
+export type Participant = {
   fullName: string;
   email: string;
   wheredidyourhear: string;
   dateofbirth: string;
 };
 
-type Event = {
+export type Event = {
+  id: string;
   title: string;
   description: string;
   date: string;
+  organizer: string;
   participants: Participant[];
+  createdAt: string;
 };
 
 interface EventStoreProps {
