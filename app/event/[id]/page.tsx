@@ -3,24 +3,22 @@
 import { useEffect, useState } from 'react';
 import { Back } from '@/components';
 import useEvent from '@/hooks/useEvent';
-import useEventStore from '@/store/event';
+import useEventStore, { Participant, Event } from '@/store/event';
 
 const Page = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const { data, isLoading, error } = useEvent(id);
   const { search, event, setEvent, setSearch } = useEventStore();
-  const [filteredParticipants, setFilteredParticipants] = useState([]);
+  const [filteredParticipants, setFilteredParticipants] = useState<Participant[]>([]);
 
   useEffect(() => {
     if (data) {
-      console.log(data);
-      setEvent(data);
+      setEvent(data as Event);
     }
   }, [data, setEvent]);
 
   useEffect(() => {
     if (event) {
-      // Filter participants based on search query
       const filtered = event.participants.filter(
         (participant) =>
           participant.fullName.toLowerCase().includes(search.toLowerCase()) ||
