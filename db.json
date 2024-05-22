@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Lorem 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur",
+    "createdAt": "11-02-1999",
+    "participants": []
+  },
+  {
+    "id": "2",
+    "title": "Lorem 2",
+    "description": "Lorem ipsum dolor sit amet, consectetur",
+    "createdAt": "11-02-1999",
+    "participants": [
+      {
+        "email": "a@example.com",
+        "fullName": "name surname",
+        "dateofbirth": "12-05-2005",
+        "wheredidyourhear": "social media"
+      },
+      {
+        "email": "b@example.com",
+        "fullName": "name surname",
+        "dateofbirth": "21-05-2000",
+        "wheredidyourhear": "friends"
+      },
+      {
+        "email": "c@example.com",
+        "fullName": "name surname",
+        "dateofbirth": "12-05-1998",
+        "wheredidyourhear": "myself"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Lorem 3",
+    "description": "Lorem ipsum dolor sit amet, consectetur",
+    "createdAt": "06-02-1999",
+    "participants": []
+  }
+]
